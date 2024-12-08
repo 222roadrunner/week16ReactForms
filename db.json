@@ -1,0 +1,29 @@
+{
+    "AlbumInfo": [
+    {
+        "id": 1,
+        "title": "Paid Salvation",
+        "artist": "A. Swayze & the Ghosts"
+    },
+    {
+        "id": 2,
+        "title": "Life of Leisure",
+        "artist": "Washed Out"
+    },
+    {
+        "id": 3,
+        "title": "Neotraditional",
+        "artist": "MX vs. The Railroad Industry"
+    },
+    {
+        "id": 4,
+        "title": "Drifter",
+        "artist": "Young Prisms"
+    },
+    {
+        "id": 5,
+        "title": "Home Movies",
+        "artist": "Vivienne Eastwood"
+    }
+    ]
+}

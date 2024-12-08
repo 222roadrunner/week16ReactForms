@@ -1,49 +1,52 @@
 import PlainButton from "./PlainButton"
 
-const AlbumInfo =[
-    {
-        id: 1,
-        title: "Paid Salvation",
-        artist: "A. Swayze & the Ghosts"
-    },
-    {
-        id: 2,
-        title: "Life of Leisure",
-        artist: "Washed Out"
-    },
-    {
-        id: 3,
-        title: "Neotraditional",
-        artist: "MX vs. The Railroad Industry"
-    },
-    {
-        id: 4,
-        title: "Drifter",
-        artist: "Young Prisms"
-    },
-    {
-        id: 5,
-        title: "Home Movies",
-        artist: "Vivienne Eastwood"
-    },
-]
+type Album = {
+    id: number
+    title: string
+    artist: string
+};
 
-export default function List() {
+type ListProps = {
+    list: Album[]
+    setList: React.Dispatch<React.SetStateAction<Album[]>>
+    deleteItem: (id: number) => void
+    updateItem: (id: number, title: string, artist: string) => void
+};
+
+type AlbumNameProps = {
+    name: Album
+    deleteItem: () => void
+    updateItem: () => void
+};
+
+export default function List({list, deleteItem, updateItem}: ListProps) {
     return (
         <ol>
-            {AlbumInfo.map(name => <AlbumName name={name}/>)}
+            {list.map((name) => (
+                <AlbumName
+                    key={name.id}
+                    name={name}
+                    deleteItem={() => deleteItem(name.id)}
+                    updateItem={() => updateItem(name.id, name.title, name.artist)}
+                />))}
         </ol>        
     )
 }
 
-function AlbumName({name}: {name: {id: number, title: string, artist: string}}) {
+function AlbumName({name, deleteItem, updateItem}: AlbumNameProps) {
     return (
         <li>
             <div>
                 {name.title} - {name.artist}
             </div>
-            <PlainButton theme={"btn btn-primary btn-sm me-2"} children={"Update"} onClick={() => alert("Content Modified")}/>
-            <PlainButton theme={"btn btn-danger btn-sm me-2"} children={"Delete"} onClick={() => alert("Content Deleted")}/>
+            <PlainButton 
+                theme={"btn btn-primary btn-sm me-2"} 
+                children={"Update"} 
+                onClick={updateItem}/>
+            <PlainButton 
+                theme={"btn btn-danger btn-sm me-2"} 
+                children={"Delete"} 
+                onClick={deleteItem}/>
         </li>
     )
 }
