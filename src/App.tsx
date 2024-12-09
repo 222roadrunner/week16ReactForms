@@ -6,11 +6,17 @@ import { useState } from "react"
 export default function App() {
     const [list, setList] = useState(AlbumInfo)
 
-    const addItem = () => {
+    const newItem = () => {      
+        const newID = list.length ? list[list.length-1].id + 1 : 0
+
+        const newTitle = prompt("Input new album name") || "New Album"
+        
+        const newArtist = prompt("Input new artist name") || "New Artist"
+
         const newAlbum = {
-            id: list.length ? list[list.length-1].id + 1 : 0,
-            title: "album",
-            artist: "artist"
+            id: newID,
+            title: newTitle,
+            artist: newArtist
         }
 
         setList([...list, newAlbum])
@@ -33,7 +39,7 @@ export default function App() {
     return (
         <div>
             <Header/>
-            <Sidebar addItem={addItem}/>
+            <Sidebar newItem={newItem}/>
         <div>
             <List 
                 list={list} 

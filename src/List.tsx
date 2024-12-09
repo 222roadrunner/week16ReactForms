@@ -1,5 +1,3 @@
-import PlainButton from "./PlainButton"
-
 type Album = {
     id: number
     title: string
@@ -39,14 +37,16 @@ function AlbumName({name, deleteItem, updateItem}: AlbumNameProps) {
             <div>
                 {name.title} - {name.artist}
             </div>
-            <PlainButton 
-                theme={"btn btn-primary btn-sm me-2"} 
-                children={"Update"} 
-                onClick={updateItem}/>
-            <PlainButton 
-                theme={"btn btn-danger btn-sm me-2"} 
-                children={"Delete"} 
-                onClick={deleteItem}/>
+            <div>
+                <button 
+                    type="button" 
+                    className="btn btn-primary btn-sm me-2"
+                    onClick={updateItem}>Update</button>
+                <button 
+                    type="button" 
+                    className="btn btn-danger btn-sm me-2" 
+                    onClick={deleteItem}>Delete</button>
+            </div>
         </li>
     )
 }

@@ -1,22 +1,16 @@
-import SidebarInput from "./SidebarInput"
-import PlainButton from "./PlainButton"
-
 type SidebarProps = {
-    addItem: () => void
+    newItem: () => void
 }
 
-export default function Sidebar({addItem}: SidebarProps) {
+export default function Sidebar({newItem}: SidebarProps) {
     return (
         <div className="row bg-secondary p-2">
-            <div className="col-2">
-                <PlainButton 
-                    theme={"btn btn-success"} 
-                    children={"Add"} 
-                    onClick={addItem}
-                />
-            </div>
-            <div className="col-10">
-                <SidebarInput/>
+        
+            <div className="">
+                <button
+                    type="button" 
+                    className="btn btn-success" 
+                    onClick={newItem}>Add</button>
             </div>
         </div>
     )
